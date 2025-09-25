@@ -66,3 +66,7 @@ class FootballClubViewSet(viewsets.ViewSet):
         else:
             return Response(serializer.errors, status=400)
     
+    def destroy(self, request, pk=None):
+        queryset = self.queryset.get(pk=pk)
+        queryset.delete()
+        return Response(status=204)
